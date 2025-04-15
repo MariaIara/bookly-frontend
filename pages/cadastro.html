@@ -42,43 +42,45 @@
     document.getElementById('cadastroForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        const button = document.getElementById('registerButton');
-        button.disabled = true;
-        button.textContent = 'Criando conta...';
+        window.location.href = 'login.html';
 
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value
-        };
+        // const button = document.getElementById('registerButton');
+        // button.disabled = true;
+        // button.textContent = 'Criando conta...';
 
-        try {
-            const response = await fetch('http://127.0.0.1:8000/api/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+        // const formData = {
+        //     name: document.getElementById('name').value,
+        //     email: document.getElementById('email').value,
+        //     password: document.getElementById('password').value
+        // };
 
-            let user = await response.json();
+        // try {
+        //     const response = await fetch('http://127.0.0.1:8000/api/register', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(formData)
+        //     });
 
-            console.log(user);
-            // return;
+        //     let user = await response.json();
 
-            if (response.ok) {
-                window.location.href = 'login.html';
-                return;
-            } else {
-                const data = await response.json();
-                alert(data.message || 'Erro no cadastro');
-            }
-        } catch (error) {
-            console.error('Erro ao enviar dados:', error);
-            alert('Erro inesperado');
-        } finally {
-            button.disabled = false;
-            button.textContent = 'Criar conta';
-        }
+        //     console.log(user);
+        //     // return;
+
+        //     if (response.ok) {
+        //         window.location.href = 'login.html';
+        //         return;
+        //     } else {
+        //         const data = await response.json();
+        //         alert(data.message || 'Erro no cadastro');
+        //     }
+        // } catch (error) {
+        //     console.error('Erro ao enviar dados:', error);
+        //     alert('Erro inesperado');
+        // } finally {
+        //     button.disabled = false;
+        //     button.textContent = 'Criar conta';
+        // }
     });
 </script>
